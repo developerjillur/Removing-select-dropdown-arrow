@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<!-- style -->
+<style>
+	.selsect_id{
+		background: url("http://a1lrsrealtyservices.com/demo/ot-select.png") no-repeat scroll right center #fff;
+		border: 1px solid #ccc;
+		border-radius: 2px;
+		box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05) inset;
+		box-sizing: border-box;
+		display: block;
+		font-size: 12px;
+		position: relative;
+		height: 29px;
+		margin: 0 5px 5px 0;
+		width: 100%;
+	}
+	.selsect_class{
+		cursor: pointer;
+		font-size: 14px;
+		height: 29px;
+		opacity: 0;
+		position: relative;
+		width: inherit;
+		z-index: 4;
+	}
+	.selsect_class option{padding: 3px 15px;}
+	.select_holder{position: absolute;left: 30px;top: 5px;}
+</style>
+
+</head>
+<body>
+	<h2>remove default select option arrow</h2>
+	<div class="container">
+		<div class="col-lg-4">
+			<!-- start option section -->
+				<div class="selsect_id">
+					<select class="selsect_class">
+						<option value="">- Choose One -</option>
+						<option value="1">Select item</option>
+						<option value="2">Select item</option>
+						<option value="3">Select item</option>
+						<option value="4">Select item</option>
+					</select>
+				</div>
+			<!-- end option section -->
+		</div>
+	</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".selsect_class").each(function(){
+            $(this).after("<span class='select_holder'></span>");
+        });
+        $(".selsect_class").change(function(){
+            var selectedOption = $(this).find(":selected").text();
+            $(this).next(".select_holder").text(selectedOption);
+        }).trigger('change');
+    })
+</script>
+</body>
+</html>
